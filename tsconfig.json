@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "",
+    "paths": {
+      "@babel/generator": [
+        "node_modules/@types/babel__generator"
+      ]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -16,7 +22,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
