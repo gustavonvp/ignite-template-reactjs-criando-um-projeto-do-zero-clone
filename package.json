@@ -20,6 +20,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
+    "storybook-addon-next-router": "^3.1.1",
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
