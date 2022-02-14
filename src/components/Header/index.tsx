@@ -8,7 +8,7 @@ export default function Header(): JSX.Element {
         <Link href="/">
 
             <a href="/">
-              <img src="/images/logo.svg" alt="logo" />
+              <img src="../../../public/logo.svg" alt="logo" />
             </a>
 
         </Link>
