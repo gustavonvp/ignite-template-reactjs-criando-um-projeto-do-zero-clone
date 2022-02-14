@@ -1,4 +1,5 @@
-/* eslint-disable prettier/prettier */
+// Code by:
+// https://www.gregorygaines.com/blog/posts/2020/11/21/how-to-integrate-utterances-in-react-with-reloading-comments
 import { useEffect } from 'react';
 
 const addUtterancesScript = (

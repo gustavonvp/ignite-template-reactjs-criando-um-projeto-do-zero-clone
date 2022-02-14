@@ -1,63 +1,67 @@
 .container {
-  padding: 2.5rem 0 5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0.65rem;
 
-  button {
-    background: transparent;
-    border: 0;
-    color: var(--pink-300);
-    margin-top: 4rem;
-    font-size: 1.125rem;
+  section > button {
+    color: var(--pink);
     font-weight: 600;
+    font-size: 1.125rem;
+    margin-top: 3rem;
+    border: 0;
+    background: transparent;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
   }
+
 }
 
-.posts {
-  width: 100%;
-  margin-top: 1.5rem;
+.postContent {
+  & + article {
+    margin-top: 3rem;
+  }
 
+  &:hover h1 {
+    color: var(--pink);
+  }
 
-  a {
-    display: block;
-    width: 100%;
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
 
+  p {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
 
-    h2 {
-      font-size: 1.75 rem;
-      font-weight: bold;
-      color: var(--gray-100);
-      margin-bottom: 0.5rem;
-    }
+  div {
+    display: flex;
 
-    p {
-      font-size: 1.125rem;
-      color: var(--gray-300);
-      margin-bottom: 0.5rem;
-    }
-
-    >div {
-      display:flex;
-    }
-
-    span {
-      font-size: 0.875rem;
+    time {
+      margin-right: 1.5rem;
       text-transform: capitalize;
-      color: var(--gray-500);
+    }
 
+    time,
+    span {
       display: flex;
       align-items: center;
-    
+      font-size: 0.875rem;
+      color: var(--gray-100);
+
       svg {
+        height: 1.25rem;
+        width: 1.25rem;
+        color: var(--gray-100);
         margin-right: 0.5rem;
       }
-
-      &:last-child {
-        margin-left: 1.5rem;
-      }
-      
-    }
-
-    & + a {
-      margin-top: 3rem;
     }
   }
 }

@@ -1,8 +1,7 @@
-/* eslint-disable prettier/prettier */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { RouterContext } from 'next/dist/next-server/lib/router-context';
 
 import { getPrismicClient } from '../../services/prismic';
 import App, { getStaticProps } from '../../pages';
@@ -122,7 +121,7 @@ describe('Home', () => {
   it('should be able to render logo', () => {
     const postsPagination = mockedQueryReturn;
 
-    render(<App postsPagination={postsPagination} preview={false} />);
+    render(<App postsPagination={postsPagination} />);
 
     screen.getByAltText('logo');
   });
@@ -130,7 +129,7 @@ describe('Home', () => {
   it('should be able to render posts documents info', () => {
     const postsPagination = mockedQueryReturn;
 
-    render(<App postsPagination={postsPagination} preview={false} />);
+    render(<App postsPagination={postsPagination} />);
 
     screen.getByText('Como utilizar Hooks');
     screen.getByText('Pensando em sincronização em vez de ciclos de vida');
@@ -148,7 +147,7 @@ describe('Home', () => {
   it('should be able to navigate to post page after a click', () => {
     const postsPagination = mockedQueryReturn;
 
-    render(<App postsPagination={postsPagination} preview={false} />, {
+    render(<App postsPagination={postsPagination} />, {
       wrapper: RouterWrapper,
     });
 
@@ -186,7 +185,7 @@ describe('Home', () => {
       },
     ];
 
-    render(<App postsPagination={postsPagination} preview={false} />);
+    render(<App postsPagination={postsPagination} />);
 
     screen.getByText('Como utilizar Hooks');
     const loadMorePostsButton = screen.getByText('Carregar mais posts');
@@ -207,7 +206,7 @@ describe('Home', () => {
     const postsPagination = mockedQueryReturn;
     postsPagination.next_page = null;
 
-    render(<App postsPagination={postsPagination} preview={false} />);
+    render(<App postsPagination={postsPagination} />);
 
     screen.getByText('Como utilizar Hooks');
     screen.getByText('Criando um app CRA do zero');

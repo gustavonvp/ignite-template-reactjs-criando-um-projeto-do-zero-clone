@@ -1,9 +1,8 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import Prismic from '@prismicio/client';
-
+import { ApiOptions } from '@prismicio/client/types/Api';
+import { DefaultClient } from '@prismicio/client/types/client';
 import { Document } from '@prismicio/client/types/documents';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const apiEndpoint = process.env.PRISMIC_API_ENDPOINT;
 const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
@@ -16,11 +15,11 @@ function linkResolver(doc: Document): string {
 }
 
 // Client method to query from the Prismic repo
-const Client = (req = null) =>
-  // eslint-disable-next-line no-use-before-define
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken));
 
-const createClientOptions = (req = null, prismicAccessToken = null) => {
+const createClientOptions = (
+  req = null,
+  prismicAccessToken = null
+): ApiOptions => {
   const reqOption = req ? { req } : {};
   const accessTokenOption = prismicAccessToken
     ? { accessToken: prismicAccessToken }
@@ -31,11 +30,16 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
   };
 };
 
-// eslint-disable-next-line consistent-return
-const Preview = async (req, res) => {
+const Client = (req = null): DefaultClient =>
+  Prismic.client(apiEndpoint, createClientOptions(req, accessToken));
+
+const Preview = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const { token: ref, documentId } = req.query;
   const redirectUrl = await Client(req)
-    .getPreviewResolver(ref, documentId)
+    .getPreviewResolver(String(ref), String(documentId))
     .resolve(linkResolver, '/');
 
   if (!redirectUrl) {
@@ -44,7 +48,7 @@ const Preview = async (req, res) => {
 
   res.setPreviewData({ ref });
   res.writeHead(302, { Location: `${redirectUrl}` });
-  res.end();
+  return res.end();
 };
 
 export default Preview;

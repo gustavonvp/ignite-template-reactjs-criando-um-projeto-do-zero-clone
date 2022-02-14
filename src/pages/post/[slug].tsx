@@ -1,20 +1,16 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
-/* eslint-disable react/no-danger */
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { format } from 'date-fns';
-import { RichText } from 'prismic-dom';
-import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
-import { ptBR } from 'date-fns/locale';
-import { useRouter } from 'next/router';
-import Prismic from '@prismicio/client';
-import Link from 'next/link';
-// eslint-disable-next-line import/no-unresolved
-import UtterancesComments from 'src/components/UtterancesComments';
-import { Head } from 'next/document';
 import { useMemo } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { FiClock, FiUser, FiCalendar } from 'react-icons/fi';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+import { RichText } from 'prismic-dom';
+import Prismic from '@prismicio/client';
+
 import Header from '../../components/Header';
+import UtterancesComments from '../../components/UtterancesComments';
 
 import { getPrismicClient } from '../../services/prismic';
 

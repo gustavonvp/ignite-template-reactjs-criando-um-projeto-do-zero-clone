@@ -1,11 +1,5 @@
 {
   "presets": [
     "next/babel"
-  ],
-  
-  "plugins": [
-    ["styled-jsx/babel", { "sourceMaps": true }]
   ]
-  
-  
 }
