@@ -111,7 +111,7 @@ export default function Post({
                 {readTime} min
               </span>
             </div>
-            {isEditedPost && (
+            {/* {isEditedPost && (
               <div className={styles.postEdited}>
                 <span>
                   * editado em{' '}
@@ -136,7 +136,7 @@ export default function Post({
                   </time>
                 </span>
               </div>
-            )}
+            )} */}
             <div className={styles.postBody}>
               {post.data.content.map(postContent => {
                 return (
